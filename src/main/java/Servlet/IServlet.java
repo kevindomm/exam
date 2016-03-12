@@ -17,7 +17,6 @@ import org.json.simple.parser.JSONParser;
 public class IServlet extends HttpServlet {
 
 	private String FACE_ENDPOINT_URL = "http://gateway-a.watsonplatform.net/calls/url/URLGetRankedImageFaceTags";
-	CloudantClientClass db = new CloudantClientClass();
 
  @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,7 +37,6 @@ public class IServlet extends HttpServlet {
 			jsonString += line;
 		}
 		request.setAttribute("face",sb.toString());
-		db.addEntry(jsonString);
 		request.setAttribute("message", "Information Extraction Complete");
 
 		//ImageFaces image_faces = service.recognizeFaces(input_url,false);
